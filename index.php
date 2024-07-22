@@ -44,15 +44,15 @@ $query = mysqli_query($connect, $sql);
             </thead>
             <tbody id="employeeTable">
                 <?php while ($rows = mysqli_fetch_assoc($query)) : ?>
-                    <tr data-id="1">
+                    <tr data-id="<?php echo $rows['id'] ?>">
                         <td><?php echo $rows['id'] ?></td>
                         <td><?php echo $rows['Name'] ?></td>
                         <td><?php echo $rows['Address'] ?></td>
                         <td><?php echo $rows['salary'] ?></td>
                         <td>
-                            <button class="btn btn-info btn-sm viewBtn">View</button>
-                            <button class="btn btn-warning btn-sm updateBtn">Update</button>
-                            <button class="btn btn-danger btn-sm deleteBtn">Delete</button>
+                            <button class="btn btn-info btn-sm viewBtn" onclick="window.location.href = 'read.php?id=<?php echo $rows['id'] ?>'">View</button>
+                            <button class="btn btn-warning btn-sm updateBtn" onclick="window.location.href = 'update.php?id=<?php echo $rows['id'] ?>'">Update</button>
+                            <button class=" btn btn-danger btn-sm deleteBtn" onclick="window.location.href = 'delete.php?id=<?php echo $rows['id'] ?>'">Delete</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
